@@ -1,7 +1,9 @@
 from locust import HttpLocust, TaskSet, task
+from lxml import html
 
 
 class UserBehavior(TaskSet):
+    SIGN_IN_PAGE_CSS = '[class^="Header__HeaderItem-]'
     def on_start(self):
         """ on_start is called when a Locust start before
             any task is scheduled
@@ -11,7 +13,10 @@ class UserBehavior(TaskSet):
     def login(self):
         data = 'utf8=%E2%9C%93&user%5Bemail%5D=usersu.bme1%40gmail.com&user%5Bpassword%5D=b00mtrain&user%5Bremember_me%5D=1&commit=Log+In'
         self.client.get("/signin")
-        self.client.post("/signin", data=data)
+        r = self.client.post("/signin", data=data)
+        tree = html.fromstring(r.text)
+        assert tree.cssselect(self.SIGN_IN_PAGE_CSS)[0].text == "Dashboard", \
+            "Expected title has not been found!"
 
     @task
     def segments(self):
