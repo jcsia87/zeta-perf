@@ -1,0 +1,12 @@
+{
+"sections":
+ [{
+     "name": "entertainment_section",
+     "filters":
+         [{
+             "name": "resource-type",
+             "values": ["movie"]
+         }],
+     "count": 5
+ }]
+}

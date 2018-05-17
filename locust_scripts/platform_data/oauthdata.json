@@ -1,0 +1,8 @@
+{
+  "client_id": "FP3iP1blgJbdmmSRYS1I96byb1nXryTs",
+  "username": "david+zt2bt-qa@boomtrain.com",
+  "password": "boomtrain123",
+  "connection": "Username-Password-Authentication",
+  "grant_type": "password",
+  "scope":  "openid app_metadata name email user_id"
+}
