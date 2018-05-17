@@ -6,6 +6,7 @@ class UserBehavior(TaskSet):
     headers = json.load(open("api_data/standardheader.json"))
     create_user_data = json.load(open("api_data/createuser.json"))
     create_activity_data = json.load(open("api_data/createactivity.json"))
+    create_campaign_data = json.load(open("api_data/createcampaign.json"))
 
     @task
     def get_user(self):
@@ -29,6 +30,14 @@ class UserBehavior(TaskSet):
                              headers=self.headers)
         print r.content
         assert r.status_code is 202, "Unexpected response code: " + str(r.status_code)
+
+    @task
+    def create_campaign(self):
+        r = self.client.post("/201507/campaigns",
+                             json=self.create_campaign_data,
+                             headers=self.headers)
+        print r.content
+        assert r.status_code is 200, "Unexpected response code: " + str(r.status_code)
 
 
 class WebsiteUser(HttpLocust):

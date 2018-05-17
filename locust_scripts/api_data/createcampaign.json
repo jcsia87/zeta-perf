@@ -1,0 +1,14 @@
+{
+    "nudge": {
+        "channel": "email",
+        "context_existence": "singular",
+        "name": "sample name ray 1",
+        "nudge_type": "manual",
+        "schedule": "2018-03-05T16:00:00.0Z",
+        "touch_type": "promotional",
+        "audience": [],
+        "audience_exclude": [],
+        "message_templates_attributes": {},
+        "status": "draft"
+    }
+}
