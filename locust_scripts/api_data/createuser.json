@@ -1,0 +1,32 @@
+{
+  "subscriber":{
+    "uid":"frodo.baggins",
+    "first_name":"Frodo",
+    "last_name":"Baggins",
+    "name":"Frodo T. Baggins",
+    "signed_up_at":"2015-07-01T09:30:00Z",
+    "properties":{
+      "gender":"male",
+      "age":53,
+      "address":{
+        "address_line":"Bag End",
+        "city":"Hobbiton",
+        "state":"Shire",
+        "postal_code":"SH9087",
+        "country":"Middle Earth"
+      }
+    },
+    "contacts":[
+      {
+        "contact_type":"email",
+        "contact_value":"frodo.baggins@bagend.com",
+        "subscription_status":"active"
+      },
+      {
+        "contact_type":"phone",
+        "contact_value":"+12345678900",
+        "subscription_status":"active"
+      }
+    ]
+  }
+}
