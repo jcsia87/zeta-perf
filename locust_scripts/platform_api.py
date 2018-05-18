@@ -32,7 +32,7 @@ class UserBehavior(TaskSet):
     def recommendations_advanced(self):
         r = self.client.post("/{}/email/{}?test=true".format('zt2bt-qa', 'david+zt2bt-qa@boomtrain.com'),
                              json=self.recommendations_advance_data,
-                             headers=self.headers_with_bearer)
+                             headers=self.headers)
         print r.content
         assert r.status_code is 200, "Unexpected response code: " + str(r.status_code)
 
