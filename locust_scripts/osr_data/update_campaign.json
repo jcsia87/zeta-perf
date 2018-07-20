@@ -1,0 +1,65 @@
+{
+    "site_id": "test-demo-site",
+    "name": "",
+    "channels": [
+      "web"
+    ],
+    "status": "active",
+    "selector": {
+      "id": "#nav-below",
+      "placement": "prepend"
+    },
+    "recs": {
+      "sections": [
+        {
+          "name": "entertainment_section",
+          "request_context": "user_interest",
+          "filters": [
+            {
+              "name": "resource-type",
+
+              "values": [
+                "article",
+                "video"
+              ]
+            },
+            {
+              "name": "keyword",
+
+              "values": [
+                "entertainment"
+              ]
+            }
+          ],
+          "count": 5
+        },
+        {
+          "name": "news_articles",
+          "request_context": "user_interest",
+          "filters": [
+            {
+              "name": "resource-type",
+
+              "values": [
+                "article"
+              ]
+            },
+            {
+              "name": "keyword",
+
+              "values": [
+                "news",
+                "breaking news"
+              ]
+            }
+          ],
+          "count": 5
+        }
+      ],
+      "exclude": []
+    },
+    "template": {
+      "html": "<h1 id='moreRecs'>More Recommendations for You</h1>\n<table class='bt_recommendations'>\n  <tbody>\n    <tr>\n  {% for rec in entertainment_section.recs %}\n    <td class='bt_item'>\n      <a href='{{rec.click-url}}'>\n        <div class='thumbnail'>\n          <img src='https://images.boomtrain.com/337x185/{{rec.thumbnail}}'>\n        </div>\n        <div class='text_block'>\n          <div class='title'>\n            {{rec.title}}\n          </div>\n          <div class='description'>\n            {{rec.description | truncate: 152}}\n          </div>\n        </div>\n      </a>\n    </td>\n  {% endfor %}\n    </tr>\n  </tbody>\n</table>",
+      "css": "#moreRecs {\n    margin-top:20px;\n}\n\n.bt_recommendations {\n  width: 100%;\n  background-color: transparent;\n  border-top: 1px solid rgba(83, 97, 102, 0.15);\n  border-bottom: 1px solid rgba(83, 97, 102, 0.15);\n  padding: 11px;\n}\n\n.bt_item {\n  padding: 10px;\n  width:20%;\n  vertical-align:top;\n}\n\n.thumbnail img {\n  width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n  margin-bottom: 20px;\n  display:block;\n}\n\na .title:hover {\n  color: #009ec5;\n}\n\n.title {\n  color: blue;\n  font-size: 16px;\n  font-weight: 700;\n  line-height: 18px;\n  padding-bottom: 5px;\n}\n\n.description {\n  color: #536266;\n  font-family: Lato;\n  font-size: 14px;\n  font-weight: 300;\n  line-height: 18px;\n}"
+    }
+  }

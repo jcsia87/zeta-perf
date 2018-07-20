@@ -3,10 +3,10 @@ import json
 
 
 class UserBehavior(TaskSet):
-    headers = json.load(open("headers/standardheader.json"))
-    create_user_data = json.load(open("api_data/createuser.json"))
-    create_activity_data = json.load(open("api_data/createactivity.json"))
-    create_campaign_data = json.load(open("api_data/createcampaign.json"))
+    headers = json.load(open("headers/standard_header.json"))
+    create_user_data = json.load(open("api_data/create_user.json"))
+    create_activity_data = json.load(open("api_data/create_activity.json"))
+    create_campaign_data = json.load(open("api_data/create_campaign.json"))
 
     @task
     def get_user(self):
