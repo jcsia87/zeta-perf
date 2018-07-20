@@ -4,7 +4,7 @@ import json
 
 class UserBehavior(TaskSet):
     oauth_data = json.load(open("platform_data/oauthdata.json"))
-    headers = json.load(open("headers/standardheader.json"))
+    headers = json.load(open("headers/standard_header.json"))
     headers_with_bearer = headers
     recommendations_advance_data = json.load(open("platform_data/recommendations.json"))
 
