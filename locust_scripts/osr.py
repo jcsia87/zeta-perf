@@ -26,6 +26,7 @@ class UserBehavior(TaskSet):
         r = self.client.put("/api/v1/campaigns/{}".format(random.choice(self.ids)), json=self.update_campaign_body)
         assert r.status_code is 204, "Unexpected response code: " + str(r.status_code)
 
+
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
     min_wait = 2000
