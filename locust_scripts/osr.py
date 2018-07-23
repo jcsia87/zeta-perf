@@ -7,9 +7,12 @@ from datetime import datetime
 class UserBehavior(TaskSet):
 
     def on_start(self):
-        self.ids = ['20', '7', '22', '37', '14', '11', '17', '13', '28', '12']
+        # self.ids = ['11', '17', '13', '28', '12']
+        # self.update_ids = ['20', '7', '22', '37', '14']
+        self.ids = ['11']
+        self.update_ids = ['20']
         self.update_campaign_body = json.load(open("osr_data/update_campaign.json"))
-    
+
     @task
     def get_all_osr_campaigns(self):
         r = self.client.get("/api/v1/campaigns?site_id=test-demo-site")
@@ -23,8 +26,18 @@ class UserBehavior(TaskSet):
     @task
     def update_osr_campaign(self):
         self.update_campaign_body['name'] = "Update: OSR Campaign - " + str(datetime.now())
-        r = self.client.put("/api/v1/campaigns/{}".format(random.choice(self.ids)), json=self.update_campaign_body)
+        r = self.client.put("/api/v1/campaigns/{}".format(random.choice(self.update_ids)), json=self.update_campaign_body)
         assert r.status_code is 204, "Unexpected response code: " + str(r.status_code)
+
+    @task
+    def get_active_onsite_selectors(self):
+        r = self.client.get("/api/v1/selectors?site_id=test-demo-site")
+        assert r.status_code is 200, "Unexpected response code: " + str(r.status_code)
+
+    @task
+    def get_all_onsite_selectors(self):
+        r = self.client.get("/api/v1/selectors?site_id=test-demo-site&bt_onsite_test=true")
+        assert r.status_code is 200, "Unexpected response code: " + str(r.status_code)
 
 
 class WebsiteUser(HttpLocust):
