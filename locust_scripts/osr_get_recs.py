@@ -1,7 +1,6 @@
 from locust import HttpLocust, TaskSet, task
 import json
 import random
-from datetime import datetime
 
 
 class UserBehavior(TaskSet):
